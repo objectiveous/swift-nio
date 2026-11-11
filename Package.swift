@@ -16,7 +16,7 @@
 import PackageDescription
 
 let swiftAtomics: PackageDescription.Target.Dependency = .product(name: "Atomics", package: "swift-atomics")
-let swiftCollections: PackageDescription.Target.Dependency = .product(name: "DequeModule", package: "swift-collections")
+let swiftCollections: PackageDescription.Target.Dependency = .product(name: "Collections", package: "swift-collections")
 let swiftSystem: PackageDescription.Target.Dependency = .product(name: "SystemPackage", package: "swift-system")
 
 // These platforms require a dependency on `NIOPosix` from `NIOHTTP1` to maintain backward
@@ -622,7 +622,7 @@ let package = Package(
 if Context.environment["SWIFTCI_USE_LOCAL_DEPS"] == nil {
     package.dependencies += [
         .package(url: "https://github.com/apple/swift-atomics.git", from: "1.1.0"),
-        .package(url: "https://github.com/apple/swift-collections.git", from: "1.1.0"),
+        .package(path: "../swift-collections"),
         .package(url: "https://github.com/apple/swift-system.git", from: "1.4.0"),
     ]
 } else {
